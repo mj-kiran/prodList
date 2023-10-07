@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
+
 import "./CategoryForm.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -49,13 +51,13 @@ const AddProduct = () => {
           value={productName}
           onChange={(e) => setProductName(e.target.value)}
         />
-        <button type="submit">add Product</button>
+        <Button type="submit">Add Product</Button>
         &nbsp;{" "}
-        <button
+        <Button className="btn-danger"
           onClick={() => navigate(`/category/${categoryId}/${subcategoryId}`)}
         >
           Cancel
-        </button>
+        </Button>
       </form>
     </div>
   );

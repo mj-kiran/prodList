@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './Categories.css'
 import axios from "axios";
+import Table from "react-bootstrap/Table";
+import {Button}from'react-bootstrap'
 
 function Categories() {
      const [categories, setCategories] = useState([]);
@@ -23,16 +25,32 @@ function Categories() {
   return (
     <div className="container">
       <Link to="/create-category" className="btn btn-primary">
-        <button>Add Category</button>
+        Add Category
       </Link>
-      <h2>Categories({categories.length})</h2>
-      <ul >
-        {categories.map((category) => (
-          <li key={category._id}>
-            <Link to={`/category/${category._id}`}>{category.name}</Link>
-          </li>
-        ))}
-      </ul>
+      
+      <Table striped>
+        <thead>
+          <tr>
+            
+            <th>Categories({categories.length})</th>
+          </tr>
+        </thead>
+        <tbody>
+          {categories.map((category) => (
+            <tr key={category._id}>
+              <td>{category.name}</td>
+              <td>
+                <Link
+                  to={`/category/${category._id}`}
+                  className="btn btn-primary"
+                >
+                  View
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 }

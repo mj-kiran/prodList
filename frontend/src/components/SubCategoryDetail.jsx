@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
 import { Link } from "react-router-dom";
+import Table from "react-bootstrap/Table";
 
 function SubCategoryDetail() {
   const [subcategory, setSubcategory] = useState(null);
@@ -16,7 +17,7 @@ function SubCategoryDetail() {
       .get(`/api/categories/subcategory/subcategories/${subcategoryId}`)
       .then((response) => {
         setSubcategory(response.data.subcategory);
-        console.log(response.data.subcategory);
+        // console.log(response.data.subcategory);
         setLoading(false);
       })
       .catch((error) => {
@@ -45,26 +46,35 @@ function SubCategoryDetail() {
   return (
     <div className="container">
       <div className="buttons_top ">
-        <Link to={`/category/${categoryId}`} className="btn btn-primary">
-          <button className="back_b">Back</button>
+        <Link to={`/category/${categoryId}`} className="btn btn-dark">
+          Back
         </Link>
         &nbsp;
         <Link
           to={`/category/${categoryId}/${subcategoryId}/add-product`}
-          className="btn btn-primary"
+          className="btn btn-secondary"
         >
-          <button>Add Products</button>
+          Add Products
         </Link>
       </div>
-      <h2>{subcategory.name} </h2>
-      <h3>Products({subcategory.products.length})</h3>
-      <ul className="subCat">
-        {subcategory.products.map((product) => (
-          
-            <li key={product._id}>{product.name}</li>
-          
-        ))}
-      </ul>
+      <br/>
+      <h1>{subcategory.name} </h1>
+      
+
+      <Table striped>
+        <thead>
+          <tr>
+            <th>Products({subcategory.products.length})</th>
+          </tr>
+        </thead>
+        <tbody>
+          {subcategory.products.map((product) => (
+            <tr key={product._id}>
+              <td>{product.name}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 }

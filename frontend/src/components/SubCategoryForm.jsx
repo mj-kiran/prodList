@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {  useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-
+import {Button}from 'react-bootstrap'
 import "./CategoryForm.css";
 const SubCategoryForm = () => {
     const [subCategory, setSubCategory] = useState("");
@@ -48,11 +48,11 @@ const navigate=useNavigate()
           value={subCategory}
           onChange={(e) => setSubCategory(e.target.value)}
         />
-        <button type="submit">Create </button>
-        &nbsp;{" "}
-        <button onClick={() => navigate(`/category/${categoryId}`)}>
+        <Button  type="submit">Create </Button>
+        &nbsp;
+        <Button className="btn-danger" onClick={() => navigate(`/category/${categoryId}`)}>
           Cancel
-        </button>
+        </Button>
       </form>
     </div>
   );
