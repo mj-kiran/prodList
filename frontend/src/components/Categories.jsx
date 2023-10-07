@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import './Categories.css'
 import axios from "axios";
 import Table from "react-bootstrap/Table";
-import {Button}from'react-bootstrap'
 
 function Categories() {
      const [categories, setCategories] = useState([]);
@@ -21,6 +20,12 @@ function Categories() {
            setLoading(false);
          });
      }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+if (!categories) {
+  return <div>Category not found</div>;
+}
 
   return (
     <div className="container">

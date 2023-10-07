@@ -17,7 +17,7 @@ function SubCategoryDetail() {
       .get(`/api/categories/subcategory/subcategories/${subcategoryId}`)
       .then((response) => {
         setSubcategory(response.data.subcategory);
-        // console.log(response.data.subcategory);
+        
         setLoading(false);
       })
       .catch((error) => {
@@ -29,6 +29,7 @@ function SubCategoryDetail() {
       .get(`/api/products/get-products-by-subcategory/${subcategoryId}`)
       .then((response) => {
         setProducts(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -68,7 +69,7 @@ function SubCategoryDetail() {
           </tr>
         </thead>
         <tbody>
-          {subcategory.products.map((product) => (
+          {products.map((product) => (
             <tr key={product._id}>
               <td>{product.name}</td>
             </tr>
