@@ -1,5 +1,9 @@
 import express from 'express'
+import cors from 'cors'
 import mongoose from 'mongoose';
+import categoryRouter from './routes/categoryRoutes.js'
+import subcategoryRouter from './routes/subcategoryRoutes.js'
+import productRouter from './routes/productRoutes.js'
 import dotenv from 'dotenv'
 
 dotenv.config()
@@ -14,6 +18,14 @@ dotenv.config()
    });
 
 const app = express()
+
+app.use(cors({ origin: "http://localhost:3000" }));
+app.use(express.json());
+
+app.use("/api/categories", categoryRouter);
+app.use("/api/categories/subcategory", subcategoryRouter);
+
+app.use("/api/products", productRouter); 
 
 app.listen(3300, () => {
     console.log('server started at 3300');
