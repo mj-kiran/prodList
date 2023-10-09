@@ -3,6 +3,7 @@ import {  useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import {Button}from 'react-bootstrap'
 import "./CategoryForm.css";
+import BASE_URL from "../service/BaseUrl";
 const SubCategoryForm = () => {
     const [subCategory, setSubCategory] = useState("");
     const { categoryId } = useParams();
@@ -12,7 +13,7 @@ const navigate=useNavigate()
 
     try {
       const response = await fetch(
-        "/api/categories/subcategory/create-subcategories",
+        `${BASE_URL}/api/categories/subcategory/create-subcategories`,
         {
           method: "POST",
           headers: {

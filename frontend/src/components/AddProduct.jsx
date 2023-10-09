@@ -4,10 +4,9 @@ import { Button } from "react-bootstrap";
 import "./CategoryForm.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import BASE_URL from "../service/BaseUrl";
 const AddProduct = () => {
   const [productName, setProductName] = useState("");
-    // const [categoryId, setCategoryId] = useState("");
-    // const [subcategoryId, setSubcategoryId] = useState("");
     const { categoryId, subcategoryId } = useParams();
     const navigate = useNavigate();
     // console.log(categoryId);
@@ -15,7 +14,7 @@ const AddProduct = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/products/addproduct", {
+      const response = await fetch(`${BASE_URL}/api/products/addproduct`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

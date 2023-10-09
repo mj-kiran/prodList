@@ -1,4 +1,4 @@
-import  Category  from "../models/categoryModel.js"; // 
+import  Category  from "../models/categoryModel.js"; 
 
 // Create  category
 export const createCategory = async (req, res) => {
@@ -17,7 +17,7 @@ export const listCategories = async (req, res) => {
   try {
 
     const categories = await Category.find().populate("subcategories");
-    // const products = await Product.find();
+    
 
     res.status(200).json({ categories});
   } catch (error) {

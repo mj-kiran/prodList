@@ -4,7 +4,7 @@ import axios from "axios";
 import '../App.css'
 import { Link } from 'react-router-dom'
 import Table from "react-bootstrap/Table";
-
+import BASE_URL from "../service/BaseUrl";
 
 function CategoryDetail() {
     const [category, setCategory] = useState(null);
@@ -15,20 +15,20 @@ function CategoryDetail() {
 
   useEffect(() => {
     axios
-      .get(`/api/categories/${categoryId}`)
+      .get(`${BASE_URL}/api/categories/${categoryId}`)
       .then((response) => {
         // console.log(categoryId);
-          setCategory(response.data);
-          // console.log(response.data);
+        setCategory(response.data);
+        // console.log(response.data);
         setLoading(false);
-      }) 
+      })
       .catch((error) => {
         console.error("Error fetching category:", error);
         setLoading(false);
       });
     //   products
       axios
-        .get(`/api/products/get-products-by-category/${categoryId}`)
+        .get(`${BASE_URL}/api/products/get-products-by-category/${categoryId}`)
         .then((response) => {
           setProducts(response.data);
         })

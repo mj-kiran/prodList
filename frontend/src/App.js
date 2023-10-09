@@ -12,20 +12,21 @@ import Header from './components/Header';
 function App() {
   return (
     <div className="App">
-      <Header/>
+      <Header />
       <main>
         <Router>
           <Routes>
-            <Route path="/create-category" element={<CategoryForm />} />
             <Route path="/" element={<Categories />} />
+            <Route path="/create-category" element={<CategoryForm />} />
             <Route path="/category/:categoryId" element={<CategoryDetail />} />
-            <Route
-              path="/category/:categoryId/create-SubCategory"
-              element={<SubCategoryForm />}
-            />
+
             <Route
               path="/category/:categoryId/:subcategoryId"
               element={<SubCategoryDetail />}
+            />
+            <Route
+              path="/category/:categoryId/create-SubCategory"
+              element={<SubCategoryForm />}
             />
             <Route
               path="/category/:categoryId/:subcategoryId/add-product"

@@ -11,7 +11,6 @@ import {
 router.post('/create-Category', createCategory);
 router.get("/viewCategories", listCategories);
 
-// router.get("/category/:id/subcategories", listSubcategories);
 
 router.get("/:id",categorydetail);
 

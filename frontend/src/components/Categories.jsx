@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import './Categories.css'
 import axios from "axios";
 import Table from "react-bootstrap/Table";
+import  BASE_URL  from "../service/BaseUrl";
 
 function Categories() {
      const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
      useEffect(() => {
        axios
-         .get("/api/categories/viewCategories")
+         .get(`${BASE_URL}/api/categories/viewCategories`)
          .then((response) => {
            setCategories(response.data.categories);
-          //  console.log(response.data.categories);
+           //  console.log(response.data.categories);
            setLoading(false);
          })
          .catch((error) => {
@@ -29,15 +30,15 @@ if (!categories) {
 
   return (
     <div className="container">
-      <Link to="/create-category" className="btn btn-primary">
-        Add Category
-      </Link>
-      
       <Table striped>
         <thead>
           <tr>
-            
             <th>Categories({categories.length})</th>
+            <th>
+              <Link to="/create-category" className="btn btn-primary">
+                Add Category
+              </Link>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -47,7 +48,7 @@ if (!categories) {
               <td>
                 <Link
                   to={`/category/${category._id}`}
-                  className="btn btn-primary"
+                  className="btn btn-success"
                 >
                   View
                 </Link>

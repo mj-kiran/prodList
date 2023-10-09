@@ -4,7 +4,7 @@ import axios from "axios";
 import "../App.css";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-
+import BASE_URL from "../service/BaseUrl";
 function SubCategoryDetail() {
   const [subcategory, setSubcategory] = useState(null);
   const [products, setProducts] = useState([]);
@@ -14,10 +14,12 @@ function SubCategoryDetail() {
 
   useEffect(() => {
     axios
-      .get(`/api/categories/subcategory/subcategories/${subcategoryId}`)
+      .get(
+        `${BASE_URL}/api/categories/subcategory/subcategories/${subcategoryId}`
+      )
       .then((response) => {
         setSubcategory(response.data.subcategory);
-        
+
         setLoading(false);
       })
       .catch((error) => {
@@ -26,7 +28,9 @@ function SubCategoryDetail() {
       });
     //   products
     axios
-      .get(`/api/products/get-products-by-subcategory/${subcategoryId}`)
+      .get(
+        `${BASE_URL}/api/products/get-products-by-subcategory/${subcategoryId}`
+      )
       .then((response) => {
         setProducts(response.data);
         console.log(response.data);

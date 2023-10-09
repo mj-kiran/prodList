@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import "./CategoryForm.css";
-import { useNavigate } from "react-router-dom";const CategoryForm = () => {
+import { useNavigate } from "react-router-dom";
+import BASE_URL from "../service/BaseUrl";
+
+const CategoryForm = () => {
  
   const [categoryName, setCategoryName] = useState("");
 const navigate = useNavigate();
@@ -9,7 +12,7 @@ const navigate = useNavigate();
 
     try {
       const response = await fetch(
-        '/api/categories/create-category',
+        `${BASE_URL}/api/categories/create-category`,
         {
           method: "POST",
           headers: {
